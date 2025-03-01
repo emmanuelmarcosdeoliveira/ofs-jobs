@@ -1,15 +1,13 @@
+import Footer from "@/components/Footer";
+import NavBar from "@/components/Navbar";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Maven_Pro } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const mavenPro = Maven_Pro({
+  weight: "variable",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-maven-pro",
 });
 
 export const metadata: Metadata = {
@@ -23,11 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="pt-BR" className={mavenPro.variable}>
+      <body>
+        <main className="flex min-h-screen flex-col">
+          <NavBar />
+          <div className="flex flex-1">{children}</div>
+        </main>
+        <Footer />
       </body>
     </html>
   );
