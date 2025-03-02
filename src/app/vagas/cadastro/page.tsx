@@ -1,15 +1,21 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { createJob } from "@/lib/actions";
+import { CircleAlert } from "lucide-react";
+import { useActionState } from "react";
 import FormItem from "./FormItem";
 
 export default function Cadastro() {
+  const [state, createJobAction, pedding] = useActionState(createJob, null);
+
   return (
     <main className="container mx-auto py-10">
       <h2 className="font-display mb-12 text-2xl font-bold">Cadastrar Vaga</h2>
       <Card className="mx-auto w-full py-8">
-        <form>
+        <form action={createJobAction}>
           <CardContent className="space-y-6">
             <FormItem
               name="Título da Vaga"
@@ -111,15 +117,22 @@ export default function Cadastro() {
                 className="min-h-[100px] rounded-xs border-gray-500"
               />
             </FormItem>
+            {state?.error && (
+              <div className="mb-4 flex items-center gap-4 rounded-md border border-red-200 bg-red-100 p-4 py-6 text-red-900">
+                <CircleAlert className="inline-block h-6 w-6" />
+                {state.message}
+              </div>
+            )}
           </CardContent>
 
           <CardFooter>
             <Button
+              disabled={pedding}
               type="submit"
-              variant={"outline"}
-              className="ml-auto w-full rounded-sm px-10 transition-colors hover:bg-blue-400 hover:text-black md:w-auto"
+              variant={"default"}
+              className="ml-auto w-full rounded-sm px-10 md:w-auto"
             >
-              Salvar
+              {pedding ? "salvando..." : "Submeter"}
             </Button>
           </CardFooter>
         </form>

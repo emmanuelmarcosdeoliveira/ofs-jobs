@@ -1,5 +1,5 @@
 import JobItem from "@/components/cards/Job-item";
-import { Job } from "@/util/util";
+import { Job } from "@/lib/utils";
 import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 type jobItemProps = {
