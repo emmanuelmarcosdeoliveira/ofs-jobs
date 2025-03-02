@@ -6,16 +6,16 @@ const NavBar = () => {
         <Link href="/">Logo</Link>
 
         <ul className="flex justify-center space-x-4">
-          <li className="hover:underline">
+          <li className="hover:text-blue-600">
             <Link href="/">Home</Link>
           </li>
-          <li className="hover:underline">
+          <li className="hover:text-blue-600">
             <Link href="/sobre">Sobre</Link>
           </li>
-          <li className="hover:underline">
+          <li className="hover:text-blue-600">
             <Link href="/vagas">Vagas</Link>
           </li>
-          <li className="hover:underline">
+          <li className="hover:text-blue-600">
             <Link href="/vagas/cadastro">Cadastrar vagas</Link>
           </li>
         </ul>
